@@ -4,7 +4,8 @@
 
 - [Conceptos básicos de arreglos](#conceptos)
   - [Ejemplo arreglo](#ejemplo-arreglo)
-- [Ciclo](#ciclo-for)
+- [Ciclo for clásico](#ciclo-for)
+- [Ciclos for of, for each, for in](#ciclos-forof-foreach-y-forin)
 - [Recorrer un arreglo con un ciclo `for`](#recorrer-un-arreglo-con-un-ciclo-for)
 - [Estructuras de control](#estructuras-de-control)
 - [Resumen Array-Object-Arreglo de objetos](#resumen-array-object-arreglo-de-objetos)
@@ -210,7 +211,77 @@ y así sucesivamente...
 **_El console.log combina texto fijo con valores dinámicos usando Template Literals.
 La sintaxis ${} permite insertar variables o expresiones dentro de una cadena sin necesidad de concatenar manualmente._**
 
----
+## Ciclos `for...of`, `forEach` y `for...in`
+
+### For...of
+
+Se utiliza para iterar sobre elementos de estructuras iterables como arrays, strings, mapas o sets.
+Se utilizan cuando no es relevante el índice de los elementos.
+
+**Sintaxis:**
+
+```javascript
+for (let variable of iterable) {
+  // Código a ejecutar
+}
+```
+
+```javascript
+const numeros = [1, 2, 3];
+for (let numero of numeros) {
+  console.log(numero); // 1, 2, 3
+}
+```
+
+### For Each
+
+Es un método de los arrays que ejecuta una función para cada elemento. Es ideal para trabajar directamente con el contenido del array.
+
+Sintaxis:
+
+```javascript
+array.forEach((elemento, indice, array) => {
+  // Código a ejecutar
+});
+```
+
+Ejemplo:
+
+```javascript
+const numeros = [1, 2, 3];
+numeros.forEach((numero, indice, array) => {
+  console.log(`Índice ${indice}: ${numero}`);
+  console.log(`Array completo: ${array}`);
+  // Índice 0: 1
+  // Índice 1: 2
+  // Índice 2: 3
+  // Array completo: [1, 2, 3]
+});
+```
+
+### for...in
+
+Se utiliza para iterar sobre las claves de un objeto o los índices de un array. Es más útil para objetos.
+
+Sintaxis:
+
+```javascript
+for (let clave in objeto) {
+  // Código a ejecutar
+}
+```
+
+Ejemplo:
+
+```javascript
+const numeros = [1, 2, 3];
+for (let indice in numeros) {
+  console.log(`Índice ${indice}: ${numeros[indice]}`);
+  // Índice 0: 1
+  // Índice 1: 2
+  // Índice 2: 3
+}
+```
 
 ## Estructuras de control
 
@@ -233,6 +304,8 @@ Permiten ejecutar un bloque de código solo si se cumple una condición.
     console.log("Eres menor de edad.");
   }
   ```
+
+````
 
 - **`switch`** (para múltiples casos):
 
@@ -626,3 +699,4 @@ console.log(lista); // Salida: "1,2,34,5" (esto ocurre porque al usar += en arre
 ### **Conclusión:**
 
 El operador `+=` es una forma concisa de sumar y asignar el resultado a una variable, y su uso es común tanto para números como para cadenas y otros tipos de datos.
+````
