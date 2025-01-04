@@ -13,6 +13,7 @@
 - [Arreglos bidimensionales](#arreglos-bidimensionales)
 - [Objetos](#objetos)
 - [copi](#copi)
+- [Common input validations](#common-input-validations)
 
 ## Conceptos
 
@@ -700,3 +701,93 @@ console.log(lista); // Salida: "1,2,34,5" (esto ocurre porque al usar += en arre
 
 El operador `+=` es una forma concisa de sumar y asignar el resultado a una variable, y su uso es común tanto para números como para cadenas y otros tipos de datos.
 ````
+
+## Common Input Validations
+
+Input validation is crucial in web development to ensure data integrity and security. Below are some of the most common types of validations, their purposes, and examples:
+
+---
+
+### 1. **Required Fields**
+
+- **Purpose**: Ensures that the user does not leave a mandatory field empty.
+- **Example**:
+  ```javascript
+  const input = document.getElementById("name").value.trim();
+  if (!input) {
+    alert("This field is required.");
+  }
+  ```
+
+### 2. Email Validation
+
+Purpose: Confirms that the user has entered a properly formatted email address.
+Example:
+
+```javascript
+const email = document.getElementById("email").value.trim();
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+if (!emailRegex.test(email)) {
+  alert("Please enter a valid email address.");
+}
+```
+
+### 3. Min and Max Length
+
+Purpose: Ensures the input meets a specific character length range.
+Example:
+
+```javascript
+const input = document.getElementById("username").value.trim();
+if (input.length < 5 || input.length > 15) {
+  alert("Username must be between 5 and 15 characters.");
+}
+```
+
+### 4. Password Match
+
+Purpose: Validates that two password fields contain identical values.
+Example:
+
+```javascript
+Copiar código
+const password1 = document.getElementById("password1").value.trim();
+const password2 = document.getElementById("password2").value.trim();
+if (password1 !== password2) {
+alert("Passwords do not match.");
+
+}
+```
+
+5.  Pattern Matching
+    Purpose: Checks input against a specific pattern, such as phone numbers or zip codes.
+    Example:
+    javascript
+    Copiar código
+    const phone = document.getElementById("phone").value.trim();
+    const phoneRegex = /^\d{10}$/;
+    if (!phoneRegex.test(phone)) {
+    alert("Please enter a valid 10-digit phone number.");
+    } 6. Number Validation
+    Purpose: Ensures that the input is a valid number.
+    Example:
+    javascript
+    Copiar código
+    const number = document.getElementById("age").value.trim();
+    if (isNaN(number)) {
+    alert("Please enter a valid number.");
+    } 7. Custom Rules
+    Purpose: Enforces specific business logic or application rules.
+    Example:
+    javascript
+    Copiar código
+    const input = document.getElementById("discount").value.trim();
+    if (input < 0 || input > 100) {
+    alert("Discount must be between 0 and 100.");
+    }
+    Best Practices for Input Validation
+    Client-Side and Server-Side: Always validate inputs on both the client and server for maximum security.
+    Error Messages: Provide clear, user-friendly error messages.
+    Real-Time Feedback: Use JavaScript or libraries to offer instant validation as users type.
+    Accessibility: Ensure validation works for users relying on assistive technologies.
+    With these practices, you can create a more secure and user-friendly experience. 🚀
