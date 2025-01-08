@@ -2,8 +2,11 @@
 
 ## Índice
 
-[- Lenguaje interpretado vs lenguaje compilado](#lenguaje-interpretado-vs-lenguaje-compilado)
-[- Stack trace](#stack-trace)
+[Lenguaje interpretado vs lenguaje compilado](#lenguaje-interpretado-vs-lenguaje-compilado)
+
+[Stack trace](#stack-trace)
+
+[Resumen paradigmas de programacion](#resumen-de-paradigmas-de-programación)
 
 ## Lenguaje interpretado vs lenguaje compilado
 
@@ -114,3 +117,162 @@ ZeroDivisionError: division by zero
 ---
 
 Si necesitas ayuda para interpretar un stack trace o resolver un error específico, ¡puedes compartirlo y lo revisamos juntos! 😊
+
+Puedes copiar y pegar este texto en cualquier archivo `.md` para organizar tus apuntes. 😊
+
+## Resumen de Paradigmas de Programación
+
+1. Programación Imperativa
+
+- **Qué es:** Describe cómo un programa realiza tareas mediante instrucciones paso a paso.
+- **Características:**
+  - Uso explícito de variables y control de flujo (bucles, condicionales).
+  - Enfocada en el _cómo_ resolver el problema.
+- **Lenguajes:** C, Pascal, JavaScript (puede usarse de forma imperativa).
+- **Ejemplo:**
+
+  ```javascript
+  let suma = 0;
+  for (let i = 1; i <= 5; i++) {
+    suma += i;
+  }
+  console.log(suma); // 15
+  ```
+
+2. Programación Declarativa
+
+   Qué es: Describe qué debe hacerse en lugar de cómo hacerlo.
+
+   Características:
+
+   Enfocada en el resultado final.
+   Minimiza el uso explícito de variables y control de flujo.
+
+   Lenguajes: SQL, HTML, Haskell.
+
+   Ejemplo:
+
+   ```sql
+      SELECT \* FROM usuarios WHERE edad > 18;
+   ```
+
+3. Programación Funcional
+
+   Qué es: Basada en funciones matemáticas puras. Evita el estado mutable y los efectos secundarios.
+
+   Características:
+
+   Usa funciones como ciudadanos de primera clase (pueden asignarse a variables, pasarse como argumentos, etc.).Promueve el uso de funciones puras.
+
+   Lenguajes: Haskell, Lisp, JavaScript (puede usarse funcionalmente).
+
+   ```javascript
+   const numeros = [1, 2, 3, 4];
+   const cuadrados = numeros.map(x => x \* x);
+   console.log(cuadrados); // [1, 4, 9, 16]
+   ```
+
+4. Programación Orientada a Objetos (POO)
+   Qué es: Organiza el código en "objetos" que combinan datos (atributos) y comportamientos (métodos).
+
+   Características:
+   Principios clave: encapsulación, herencia, polimorfismo y abstracción.
+   Representa el mundo real mediante objetos.
+
+   Lenguajes: Java, Python, C++.
+
+   ```javascript
+   Copiar código
+   class Persona {
+   constructor(nombre) {
+   this.nombre = nombre;
+   }
+   saludar() {
+   console.log(`Hola, soy ${this.nombre}`);
+   }
+   }
+   const juan = new Persona("Juan");
+   juan.saludar(); // Hola, soy Juan
+
+   ```
+
+5. Programación Lógica
+
+   Qué es: Basada en hechos y reglas, en lugar de instrucciones explícitas.
+
+   Características:
+   Usa lógica formal para resolver problemas.
+   Define relaciones entre datos y deja que el sistema deduzca respuestas.
+
+   Lenguajes: Prolog.
+
+   ```prolog
+   padre(juan, maria).
+   padre(juan, pedro).
+   hermano(X, Y) :- padre(Z, X), padre(Z, Y).
+   ```
+
+6. Programación Reactiva
+
+   Qué es: Maneja flujos de datos y eventos asincrónicos en tiempo real.
+
+   Características:
+   Se basa en la propagación de cambios.
+   Muy usada en interfaces de usuario y sistemas en tiempo real.
+
+   Lenguajes/Tecnologías: RxJS, React (puede incluir programación reactiva).
+
+   ```javascript
+   Copiar código
+   const { fromEvent } = rxjs;
+   fromEvent(document, 'click').subscribe(() => console.log('Clic detectado'));
+   ```
+
+7. Programación Basada en Componentes
+
+   Qué es: Construye aplicaciones dividiéndolas en piezas reutilizables llamadas componentes.
+
+   Características:
+   Cada componente encapsula su lógica y apariencia.
+   Muy usada en desarrollo web moderno.
+
+   Lenguajes/Tecnologías: React, Vue.js, Angular.
+
+   ```javascript
+   function Boton() {
+     return <button>Haz clic</button>;
+   }
+   ```
+
+8. Programación Paralela y Concurrente
+
+   Qué es: Divide tareas en subprocesos o hilos para ejecutarlas simultáneamente.
+
+   Características:
+   Muy usada en sistemas que requieren alto rendimiento.
+   Requiere manejar sincronización y evitar condiciones de carrera.
+
+   Lenguajes: Go, Java, Python (con hilos o multiprocessing).
+
+   ```python
+   import threading
+   def tarea():
+   print("Tarea ejecutada")
+   hilo = threading.Thread(target=tarea)
+   hilo.start()
+   ```
+
+   ## Resumen Visual de Paradigmas de Programación
+
+| Paradigma                | Enfocado en               | Ejemplo Clave         |
+| ------------------------ | ------------------------- | --------------------- |
+| **Imperativo**           | _Cómo_ resolver           | Bucles, condicionales |
+| **Declarativo**          | _Qué_ lograr              | SQL, HTML             |
+| **Funcional**            | Funciones puras           | `map`, `reduce`       |
+| **Orientado a Objetos**  | Objetos y clases          | Herencia, métodos     |
+| **Lógico**               | Hechos y reglas           | Prolog                |
+| **Reactivo**             | Eventos y flujos de datos | RxJS, observables     |
+| **Componentes**          | Reutilización de piezas   | React, Vue.js         |
+| **Paralelo/Concurrente** | Ejecución simultánea      | Multithreading        |
+
+[Volver al índice](#índice)
