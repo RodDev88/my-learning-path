@@ -7,6 +7,9 @@
 - [Shift, Splice, Pop](#shift-splice-pop-eliminar-elementos-de-un-array-en-javascript)
 - [Includes](#método-includes)
 - [Lenght](#lenght)
+- [forEach](#foreach)
+- [Map](#método-map-en-javascript)
+- [Concat](#método-concat-en-javascript)
 
 ## Qué son los métodos de arrays
 
@@ -363,5 +366,236 @@ console.log(arrayConHuecos.length); // 3
 | ------------------- | ------------------------------------ | ---------------------------------- | --------- |
 | `length` en arrays  | El número de elementos del array     | `let arr = [1, 2, 3]; arr.length;` | 3         |
 | `length` en strings | El número de caracteres en el string | `let str = "Hola"; str.length;`    | 4         |
+
+[Volver al índice](#índice)
+
+## forEach
+
+El método .forEach() es un método de los arreglos en JavaScript que ejecuta una función dada una vez por cada elemento de un arreglo, en orden.
+
+Es utilizado para realizar acciones sobre los elementos del arreglo sin modificar el arreglo original ni retornar un nuevo valor.
+
+A diferencia de otros métodos que devuelven un nuevo arreglo (como .map() o .filter()), .forEach() simplemente ejecuta una acción en cada elemento y no devuelve nada.
+
+Sintaxis
+
+```javascript
+array.forEach(function (element, index, array) {
+  // código a ejecutar por cada elemento
+});
+```
+
+function(element): Función que se ejecuta por cada elemento del arreglo. Recibe como parámetro el elemento actual.
+
+index (opcional): El índice del elemento actual dentro del arreglo.
+array (opcional): El arreglo original sobre el cual se está iterando.
+
+Características:
+
+No devuelve nada: El método .forEach() siempre devuelve undefined. Si se desea obtener un nuevo arreglo basado en los elementos del original, se debe usar .map().
+
+No puede ser interrumpido: No se puede usar break, continue ni return dentro de .forEach() para controlar la iteración.
+
+Ideal para efectos secundarios: Se utiliza generalmente cuando se desea realizar efectos secundarios (como actualizar el DOM, imprimir en consola, modificar variables externas, etc.), pero no para transformar o filtrar datos.
+
+Ejemplo:
+
+```javascript
+const estaciones = ["Verano", "Otoño", "Invierno", "Primavera"];
+
+estaciones.forEach(function (estacion) {
+  console.log(estacion);
+});
+```
+
+[Volver al índice](#índice)
+
+## Método `map` en JavaScript
+
+El método .map nos permite generar un arreglo nuevo a partir de aplicar una función a cada elemento de un arreglo,
+map no modifica el arreglo original.
+
+```javascript
+ const valores = [200, 100, 500, 300, 250]
+ const nuevos_valores = valores.map(x => 2* x)
+ console.log(nuevos_valores) /* [400, 200, 1000, 600, 500
+```
+
+**¿Cuando usar .forEach y cuando .map?**
+
+.forEach es útil cuando queremos hacer algo de inmediato con cada dato iterado, por ejemplo mostrarlo en pantalla o agregarlo al html. .map cuando queremos transformar los datos para seguir trabajando con ellos.
+
+El método `map` se utiliza para **crear un nuevo array transformando cada elemento del array original** mediante una función que defines. No modifica el array original.
+
+#### Definición
+
+```javascript
+array.map(callback(currentValue, index, array), thisArg);
+```
+
+- **`callback`**: Una función que se ejecuta en cada elemento del array. Recibe:
+  - **`currentValue`**: El elemento actual.
+  - **`index`** _(opcional)_: El índice del elemento actual.
+  - **`array`** _(opcional)_: El array original.
+- **`thisArg`** _(opcional)_: Un valor que se puede usar como `this` dentro del callback.
+
+#### Características clave
+
+1. Devuelve un nuevo array del mismo tamaño que el original.
+2. El array original no se modifica.
+3. Se utiliza para transformar datos, no para filtrar o iterar sin crear un nuevo array.
+
+---
+
+#### Ejemplos prácticos
+
+#### **1. Multiplicar cada número por 2**
+
+```javascript
+const numbers = [1, 2, 3, 4];
+const doubled = numbers.map((num) => num * 2);
+
+console.log(doubled); // [2, 4, 6, 8]
+console.log(numbers); // [1, 2, 3, 4] (el array original no cambia)
+```
+
+---
+
+#### **2. Convertir un array de cadenas a mayúsculas**
+
+```javascript
+const fruits = ["manzana", "pera", "uva"];
+const uppercased = fruits.map((fruit) => fruit.toUpperCase());
+
+console.log(uppercased); // ['MANZANA', 'PERA', 'UVA']
+```
+
+---
+
+#### **3. Extraer una propiedad de objetos**
+
+```javascript
+const users = [
+  { id: 1, name: "Ana" },
+  { id: 2, name: "Luis" },
+  { id: 3, name: "María" },
+];
+const names = users.map((user) => user.name);
+
+console.log(names); // ['Ana', 'Luis', 'María']
+```
+
+---
+
+#### **4. Crear un array de objetos con nuevos datos**
+
+```javascript
+const prices = [100, 200, 300];
+const pricesWithTax = prices.map((price) => ({
+  price: price,
+  priceWithTax: price * 1.19,
+}));
+
+console.log(pricesWithTax);
+/*
+[
+  { price: 100, priceWithTax: 119 },
+  { price: 200, priceWithTax: 238 },
+  { price: 300, priceWithTax: 357 }
+]
+*/
+```
+
+---
+
+#### **5. Agregar índices a los elementos**
+
+```javascript
+const letters = ["a", "b", "c"];
+const indexed = letters.map((letter, index) => `${index}: ${letter}`);
+
+console.log(indexed); // ['0: a', '1: b', '2: c']
+```
+
+---
+
+#### Cuándo usar `map`
+
+- Cuando necesitas transformar los datos de un array sin modificar el original.
+- Cuando deseas mantener el tamaño del array.
+
+[Volver al índice](#índice)
+
+## filter
+
+El método filter() en JavaScript se utiliza para crear un nuevo arreglo con todos los elementos que pasen una prueba determinada, la cual se define en una función callback. Este método no modifica el arreglo original.
+
+Sintaxis
+
+```javascript
+let nuevoArreglo = arreglo.filter(funciónDePrueba);
+```
+
+arreglo: El arreglo sobre el cual se ejecuta el filtro.
+
+funciónDePrueba: Una función que define la condición que debe cumplir cada elemento para ser incluido en el nuevo arreglo. Esta función recibe tres parámetros: el valor actual del elemento, el índice del elemento y el arreglo original.
+
+Ejemplos:
+
+Filtrar números mayores que 10:
+
+```javascript
+const numeros = [5, 12, 8, 130, 44];
+const mayoresQue10 = numeros.filter((num) => num > 10);
+console.log(mayoresQue10); // [12, 130, 44]
+```
+
+[Volver al índice](#índice)
+
+## Método `concat()` en JavaScript
+
+El método `concat()` en JavaScript se utiliza para **combinar dos o más arrays** en un nuevo array. No modifica los arrays originales, sino que devuelve un nuevo array con los elementos concatenados.
+
+#### **Sintaxis**
+
+```javascript
+array1.concat(array2, array3, ..., arrayN)
+```
+
+- **array1**: El array base al que se agregarán otros elementos o arrays.
+- **array2, ..., arrayN**: Los elementos o arrays que se quieren concatenar a `array1`.
+
+#### **Características**
+
+- Puede concatenar múltiples arrays en una sola llamada.
+- También permite agregar valores individuales, no solo arrays.
+
+#### **Ejemplo básico**
+
+```javascript
+const frutas = ["manzana", "pera"];
+const verduras = ["lechuga", "zanahoria"];
+const bebidas = ["agua", "jugo"];
+
+const supermercado = frutas.concat(verduras, bebidas);
+
+console.log(supermercado);
+// Salida: ['manzana', 'pera', 'lechuga', 'zanahoria', 'agua', 'jugo']
+```
+
+#### **Ejemplo con valores individuales**
+
+```javascript
+const numeros = [1, 2, 3];
+const concatenado = numeros.concat(4, 5, [6, 7]);
+
+console.log(concatenado);
+// Salida: [1, 2, 3, 4, 5, 6, 7]
+```
+
+### **Notas importantes**
+
+1. Si un elemento que se pasa a `concat()` es un array, sus elementos se agregan al nuevo array, no el array en sí.
+2. Los arrays originales no se modifican, manteniendo su estado inicial.
 
 [Volver al índice](#índice)
